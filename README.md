@@ -45,8 +45,16 @@ The scene follows the reference render: a seamless light-grey studio, mottled gu
 - `js/game.js`: the twelve steps, hints, scoring, results
 - `js/audio.js`: WebAudio sounds (no files)
 - `vendor/three/`: three.js 0.160.0 (local copy)
-- `.claude/skills/anatomy/`: the Anatomy skill, installed one level up in the repo
+- `js/scan.js`: MindAR card recognition and the camera backdrop
+- `target.png`, `targets.mind`: the printable card and its compiled tracking data
+- `tools/make-target.html`, `tools/serve.ps1`: redraw and recompile the card, local server
 
-## Not included
+## AR card
 
-The AR card scan (MindAR) used by the Sushi and Ramen games is not wired in: this game opens straight into play. It can be added the same way as in those repos.
+`target.png` is the card to print (about 18 cm wide, matte paper). `targets.mind` is its compiled MindAR data (mind-ar 1.2.5 with three 0.160.0, the same pins as the Sushi, Ramen and Noh games).
+
+1. Open the page on a phone over https (camera access needs it) and tap **Scan the card**.
+2. Point the back camera at the printed card. When it is recognised, the scanner shuts down and the tea table plays over the live camera feed.
+3. **Play on screen** skips the card, and the game also falls back to it when no camera is available.
+
+To redraw or recompile the card: run `tools/serve.ps1`, open `http://localhost:8130/tools/make-target.html?build=1`, and it rewrites `target.png` and `targets.mind`.
